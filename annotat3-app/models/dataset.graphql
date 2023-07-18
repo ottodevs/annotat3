@@ -1,0 +1,11 @@
+type User @loadModel(id: "$USER_ID") {
+  id: ID!
+}
+
+type Dataset @createModel(accountRelation: LIST, description: "Basic model representing a dataset for stable diffusion fine tuning") {
+  author: DID! @documentAccount
+  name: String! @string(maxLength: 200)
+  type: String @string(minLength: 1, maxLength: 50)
+  userId: StreamID! @documentReference(model: "User")
+  user: User! @relationDocument(property: "userId")
+}
