@@ -1,8 +1,8 @@
 
-type TextClassificationRecord @loadModel(id: "$TEXTCLASSIFICATION_ID") {
+type BlipCaptionRecord @loadModel(id: "$BLIPCAPTION_ID") {
   id: ID!
 }
 
 type Dataset @loadModel(id: "$DATASET_ID") {
-  textClassificationRecords: [TextClassificationRecord] @relationFrom(model: "TextClassificationRecord", property: "datasetId")
+  blipCaptionRecords: [BlipCaptionRecord] @relationFrom(model: "BlipCaptionRecord", property: "datasetId")
 }
