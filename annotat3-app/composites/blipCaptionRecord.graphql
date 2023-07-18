@@ -1,0 +1,21 @@
+type Dataset @loadModel(id: "$DATASET_ID") {
+  id: ID!
+}
+
+type BlipCaptionRecord @createModel(accountRelation: LIST, description: "Basic model representing a blipCaptionRecord for fine-tuning stable difusion") {
+  author: DID! @documentAccount
+  annotation_id: Int!
+  annotator: Int!
+  created_at: String! @string(maxLength: 1000000)
+  filename: String! @string(maxLength: 1000000)
+  _id: Int!
+  lead_time: Float!
+  review: String! @string(maxLength: 1000000)
+  stars: Int!
+  type: String! @string(maxLength: 1000000)
+  uid: Int!
+  updated_at: String! @string(maxLength: 1000000)
+  url: String! @string(maxLength: 1000000)
+  datasetId: StreamID! @documentReference(model: "Dataset")
+  dataset: Dataset! @relationDocument(property: "datasetId")
+}

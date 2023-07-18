@@ -1,0 +1,5 @@
+type User @createModel(accountRelation: SINGLE, description: "Basic model representing a user for LLM fine-tuning") {
+  author: DID! @documentAccount
+  first_name: String! @string(maxLength: 50)
+  last_name: String! @string(maxLength: 50)
+}
