@@ -1,44 +1,45 @@
 {
-  "name": "next13-src",
-  "version": "0.1.0",
-  "private": true,
-  "description": "First, run the development server:",
-  "main": "next.config.js",
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "scripts": {
-    "build": "next build",
-    "ceramic": "CERAMIC_ENABLE_EXPERIMENTAL_COMPOSE_DB='true' ceramic daemon --config ./composedb.config.json",
-    "ceramic:local": "CERAMIC_ENABLE_EXPERIMENTAL_COMPOSE_DB='true' ceramic daemon",
-    "compose": "composedb",
-    "dev": "next dev",
-    "lint": "next lint",
-    "start": "next start"
-  },
-  "dependencies": {
-    "@ceramicnetwork/http-client": "^2.26.0",
-    "@composedb/client": "^0.4.4",
-    "@types/node": "20.4.2",
-    "@types/react": "18.2.15",
-    "@types/react-dom": "18.2.7",
-    "autoprefixer": "10.4.14",
-    "encoding": "^0.1.13",
-    "eslint": "8.45.0",
-    "eslint-config-next": "13.4.10",
-    "next": "13.4.10",
-    "postcss": "8.4.26",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-icons": "^4.10.1",
-    "tailwindcss": "3.3.3",
-    "typescript": "5.1.6"
-  },
-  "devDependencies": {
-    "@ceramicnetwork/cli": "^2.34.0",
-    "@composedb/cli": "^0.4.5",
-    "@composedb/devtools": "^0.4.4",
-    "@composedb/devtools-node": "^0.4.4",
-    "@composedb/types": "^0.4.4"
+    "name": "next13-src",
+    "version": "0.1.0",
+    "private": true,
+    "description": "First, run the development server:",
+    "main": "next.config.js",
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "scripts": {
+      "build": "next build",
+      "ceramic": "CERAMIC_ENABLE_EXPERIMENTAL_COMPOSE_DB='true' ceramic daemon --config ./composedb.config.json",
+      "ceramic:local": "CERAMIC_ENABLE_EXPERIMENTAL_COMPOSE_DB='true' ceramic daemon",
+      "compose": "composedb",
+      "dev": "next dev",
+      "lint": "next lint",
+      "start": "next start"
+    },
+    "dependencies": {
+      "@ceramicnetwork/http-client": "^2.26.0",
+      "@composedb/client": "^0.4.4",
+      "@types/node": "20.4.2",
+      "@types/react": "18.2.15",
+      "@types/react-dom": "18.2.7",
+      "autoprefixer": "10.4.14",
+      "encoding": "^0.1.13",
+      "eslint": "8.45.0",
+      "eslint-config-next": "13.4.10",
+      "next": "13.4.10",
+      "postcss": "8.4.26",
+      "react": "18.2.0",
+      "react-dom": "18.2.0",
+      "react-icons": "^4.10.1",
+      "tailwindcss": "3.3.3",
+      "typescript": "5.1.6"
+    },
+    "devDependencies": {
+      "@ceramicnetwork/cli": "^2.34.0",
+      "@composedb/cli": "^0.4.5",
+      "@composedb/devtools": "^0.4.4",
+      "@composedb/devtools-node": "^0.4.4",
+      "@composedb/types": "^0.4.4"
+    }
   }
-}
+  
