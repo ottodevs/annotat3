@@ -1,0 +1,8 @@
+
+type TextClassificationRecord @loadModel(id: "$TEXTCLASSIFICATION_ID") {
+  id: ID!
+}
+
+type Dataset @loadModel(id: "$DATASET_ID") {
+  textClassificationRecords: [TextClassificationRecord] @relationFrom(model: "TextClassificationRecord", property: "datasetId")
+}
