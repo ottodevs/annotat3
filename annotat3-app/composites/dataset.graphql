@@ -8,3 +8,5 @@ type Dataset @createModel(accountRelation: LIST, description: "Basic model repre
   type: String @string(minLength: 1, maxLength: 50)
   userId: StreamID! @documentReference(model: "User")
   user: User! @relationDocument(property: "userId")
+
+}
