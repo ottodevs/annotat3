@@ -1,9 +1,11 @@
+"use client"
+
 import { createContext, useContext } from "react";
 import { CeramicClient } from "@ceramicnetwork/http-client"
 import { ComposeClient } from "@composedb/client";
-
-import { definition } from "../src/__generated__/definition.js";
 import { RuntimeCompositeDefinition } from "@composedb/types";
+
+import { definition } from "../__generated__/definition.js";
 
 /**
  * Configure ceramic Client & create context.
@@ -16,9 +18,12 @@ const composeClient = new ComposeClient({
   definition: definition as RuntimeCompositeDefinition,
 });
 
-const CeramicContext = createContext({ceramic: ceramic, composeClient: composeClient});
+export const CeramicContext = createContext({
+  ceramic: ceramic,
+  composeClient: composeClient
+});
 
-export const CeramicWrapper = ({ children }: any) => {
+export const CeramicContextProvider = ({ children }: any) => {
   return (
     <CeramicContext.Provider value={{ceramic, composeClient}}>
       {children}
@@ -32,4 +37,4 @@ export const CeramicWrapper = ({ children }: any) => {
  * @returns CeramicClient
  */
 
-export const useCeramicContext = () => useContext(CeramicContext);
+// export const useCeramicContext = () => useContext(CeramicContext);

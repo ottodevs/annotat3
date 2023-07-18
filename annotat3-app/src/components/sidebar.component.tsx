@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import ceramicLogo from "../public/ceramicLogo.png"
 
 import { FaHome, FaUser, FaHashtag } from "react-icons/fa";
 import { SidebarProps } from '../types';
@@ -14,20 +13,24 @@ export const Sidebar = ({name, username, id}: SidebarProps) => {
       <div className="top">
         <div className="logoContainer">
           <Image
-            src={ceramicLogo}
+            alt="Ceramic Logo"
+            src="/ceramicLogo.png"
+            height={100}
+            width={200}
+            priority
           />
         </div>
-        <Link href = "/">
+        <Link legacyBehavior href = "/">
           <a>
             <FaHome /> Home
           </a>
         </Link>
-        <Link href = {`/profile`}>
+        <Link legacyBehavior href = {`/profile`}>
           <a>
             <FaUser /> Profile
           </a>
         </Link>
-        <Link href = "/explore">
+        <Link legacyBehavior href = "/explore">
           <a>
             <FaHashtag /> Explore
           </a>
@@ -37,7 +40,7 @@ export const Sidebar = ({name, username, id}: SidebarProps) => {
         {name !== undefined ? (
           <div className="you">
             <b>{name}</b> <br />
-            <Link href = {`user/${id}`}>
+            <Link legacyBehavior href = {`user/${id}`}>
               <a>
               @{username}
               </a>
