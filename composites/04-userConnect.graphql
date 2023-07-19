@@ -1,0 +1,8 @@
+
+type Dataset @loadModel(id: "$DATASET_ID") {
+  id: ID!
+}
+
+type User @loadModel(id: "$USER_ID") {
+  datasets: [Dataset] @relationFrom(model: "Dataset", property: "userId")
+}x
