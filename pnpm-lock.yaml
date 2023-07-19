@@ -85,12 +85,24 @@ devDependencies:
   autoprefixer:
     specifier: 10.4.14
     version: 10.4.14(postcss@8.4.26)
+  dids:
+    specifier: ^4.0.3
+    version: 4.0.3
+  key-did-provider-ed25519:
+    specifier: ^3.0.1
+    version: 3.0.1
+  key-did-resolver:
+    specifier: ^3.0.0
+    version: 3.0.0
   postcss:
     specifier: 8.4.26
     version: 8.4.26
   tailwindcss:
     specifier: 3.3.3
     version: 3.3.3
+  uint8arrays:
+    specifier: ^4.0.4
+    version: 4.0.4
 
 packages:
 

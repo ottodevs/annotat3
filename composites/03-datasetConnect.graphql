@@ -1,9 +1,0 @@
-
-type BlipCaptionRecord @loadModel(id: "$BLIPCAPTION_ID") {
-
-  id: ID!
-}
-
-type Dataset @loadModel(id: "$DATASET_ID") {
-  blipCaptionRecords: [BlipCaptionRecord] @relationFrom(model: "BlipCaptionRecord", property: "datasetId")
-}
