@@ -13,6 +13,7 @@ import SidebarProvider from '@/providers/SidebarProvider'
 import { authenticateCeramic } from '@/util/authentication'
 import { Wagmi } from '@/components/wagmi.component'
 import Link from 'next/link'
+import { Button } from '@/components/ui/button'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -85,29 +86,30 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <CeramicContextProvider>
+          <div>
           <Wagmi />
-          <Link href="/annotation">Start annotating</Link>
-      <div style={{ display: "relative", flexDirection: "column" }}>
           {auth ? (
-            <button
-              onClick={() => {
-                alert("You are already authenticated");
-              }}
-              style={{ margin: "auto", alignContent: "center" }}
+            <Button
+            onClick={() => {
+              alert("You are already authenticated");
+            }}
+            style={{ margin: "auto", alignContent: "center" }}
             >
               Authenticated
-            </button>
+            </Button>
           ) : (
-            <button
-              onClick={() => {
-                authenticate();
-              }}
-              style={{ margin: "auto", alignContent: "center" }}
+            <Button
+            onClick={() => {
+              authenticate();
+            }}
+            style={{ margin: "auto", alignContent: "center" }}
             >
               Authenticate ceramic
-            </button>
+            </Button>
           )}
-        </div>
+
+          </div>
+          <Link href="/annotation">Start annotating</Link>
           <SidebarProvider>
           <section className="flex h-screen w-full">
               <Sidebar />
