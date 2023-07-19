@@ -151,8 +151,35 @@ export default function HomePage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Define the Navbar component
+const Navbar = ({ auth, authenticate }) => {
+  return (
+    <nav className="flex justify-between items-center p-8">
+      <Link href="/">Home</Link>
+      {auth ? (
+        <button
+          onClick={() => {
+            alert("You are already authenticated");
+          }}
+        >
+          Authenticated
+        </button>
+      ) : (
+        <button
+          onClick={() => {
+            authenticate();
+          }}
+        >
+          Authenticate ceramic
+        </button>
+      )}
+    </nav>
+  )
+}
+
   return (
     <main className="flex flex-col items-center justify-start p-24 min-h-full">
+      <Navbar auth={auth} authenticate={authenticate} />
       Homepage
       <Wagmi />
       <Link href="/annotation">Start annotating</Link>
@@ -188,3 +215,4 @@ export default function HomePage() {
     </main>
 );
 }
+
