@@ -9,10 +9,14 @@ import {
 
 console.log("definition", definition);
 
-export async function POST(name, type, userId) {
+export async function POST(req) {
+  const {searchParams} = new URL(req.url);
+  const did = searchParams.get("did");
+  const {name, type, userId} = await req.json()
+
   const ceramic = "http://localhost:7007";
   const compose = new ComposeClient({ ceramic, definition });
-  const did = await authenticateCeramicKey(ceramic, compose);
+  // const did = await authenticateCeramicKey(ceramic, compose);
   compose.setDID(did);
 
   const resCreate = await compose.executeQuery(`

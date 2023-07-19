@@ -9,10 +9,13 @@ import {
 
 console.log("definition", definition);
 
-export async function GET() {
+export async function GET(req: { url: string }) {
+  const {searchParams} = new URL(req.url);
+  const did = searchParams.get("did");
+
   const ceramic = "http://localhost:7007";
   const compose = new ComposeClient({ ceramic, definition });
-  const did = await authenticateCeramicKey(ceramic, compose);
+  // const did = await authenticateCeramicKey(ceramic, compose);
   compose.setDID(did);
 
   const datasetResponse = await compose.executeQuery(`
