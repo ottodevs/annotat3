@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useCeramicContext } from '@/context/ceramic.context';
 import { useEffect, useState } from 'react';
 import { authenticateCeramic } from '@/util/authentication';
+import { Wagmi } from '@/components/wagmi.component';
 
 type Profile = {
   did: string
@@ -151,6 +152,7 @@ export default function HomePage() {
   return (
     <main className="flex flex-col items-center justify-start p-24 min-h-full">
       Homepage
+      <Wagmi />
       <Link href="/annotation">Start annotating</Link>
       <div style={{ display: "relative", flexDirection: "column" }}>
           {auth ? (
