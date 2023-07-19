@@ -1,17 +1,37 @@
-'use client'
-
 import { FC } from 'react'
-import { HiX } from "react-icons/hi";
+import { HiX, HiHome } from "react-icons/hi";
+import { FaChartLine } from 'react-icons/fa';
 import { useSidebarContext } from '@/providers/SidebarProvider';
 import useMobileView from '@/hooks/useMobileView';
-import Links from "./components/Links";
-import SidebarCard from "./components/SidebarCard";
+import SidebarItem from './sidebarItem';
+import { MdStackedLineChart } from 'react-icons/md';
+import { MdLayers } from 'react-icons/md';
 
 type Props = {}
 
 const Sidebar: FC<Props> = () => {
   const { isMobile } = useMobileView()
   const { openSidebar, setOpenSidebar } = useSidebarContext()
+
+  const navItems = [
+    {
+      name: 'Home',
+      href: '/home',
+      Icon: HiHome,
+    },
+    {
+      name: 'Statistics',
+      href: '/statistics',
+      Icon: MdStackedLineChart,
+    },
+
+  {
+    name: 'Library',
+    href: '/library',
+    Icon: MdLayers,
+  }
+    // add more items here
+  ];
 
   return (
     <>
@@ -26,23 +46,18 @@ const Sidebar: FC<Props> = () => {
 
         <div className={`mx-[56px] mt-[50px] flex items-center`}>
           <div className="mt-1 ml-1 h-2.5 font-poppins text-[26px] font-bold uppercase text-navy-700 dark:text-white">
-            Horizon <span className="font-medium">FREE</span>
+            Annotat3
           </div>
         </div>
 
         <div className="mt-[58px] mb-7 h-px bg-gray-300 dark:bg-white/30" />
 
-        {/* Nav item */}
-        <ul className="mb-auto pt-1">
-          <Links onClickRoute={isMobile ? () => setOpenSidebar(false) : undefined} />
-        </ul>
-
-        {/* Free Horizon Card */}
-        <div className="flex justify-center">
-          <SidebarCard />
+        <div className="PagesGroup w-[290px] h-[216px] flex-col justify-start items-start gap-6 inline-flex">
+        {navItems.map((item, index) => (
+          <SidebarItem key={index} name={item.name} href={item.href} Icon={item.Icon} />
+        ))}
         </div>
 
-        {/* Nav item end */}
       </div>
     </>
   );
