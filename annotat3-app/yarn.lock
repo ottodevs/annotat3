@@ -7712,6 +7712,11 @@ ltgt@^2.1.2, ltgt@^2.2.1:
   resolved "https://registry.yarnpkg.com/ltgt/-/ltgt-2.2.1.tgz#f35ca91c493f7b73da0e07495304f17b31f87ee5"
   integrity sha512-AI2r85+4MquTw9ZYqabu4nMwy9Oftlfa/e/52t9IjtfG+mGBbTNdAoZ3RQKLHR6r0wQnwZnPIEh/Ya6XTWAKNA==
 
+lucide-react@^0.261.0:
+  version "0.261.0"
+  resolved "https://registry.yarnpkg.com/lucide-react/-/lucide-react-0.261.0.tgz#e3aa94d45c13d29d6302e9a50935dc84a4f5dd67"
+  integrity sha512-gzxEvIxf8+hGbm2ZQU/VP5TxTcnTu3ODDmYoS3a53wC4gkW9ukxmexKjTcZUzz3q8ema+DMwmPypx9Z0Bvvxog==
+
 luxon@^3.2.1:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/luxon/-/luxon-3.3.0.tgz#d73ab5b5d2b49a461c47cedbc7e73309b4805b48"
@@ -10018,7 +10023,12 @@ tailwind-merge@^1.14.0:
   resolved "https://registry.yarnpkg.com/tailwind-merge/-/tailwind-merge-1.14.0.tgz#e677f55d864edc6794562c63f5001f45093cdb8b"
   integrity sha512-3mFKyCo/MBcgyOTlrY8T7odzZFx+w+qKSMAmdFzRvqBfLlSigU6TZnlFHK0lkMwj9Bj8OYU+9yW9lmGuS0QEnQ==
 
-tailwindcss@3.3.3:
+tailwindcss-animate@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/tailwindcss-animate/-/tailwindcss-animate-1.0.6.tgz#c7195037481552cc47962ea50113830360fd0c28"
+  integrity sha512-4WigSGMvbl3gCCact62ZvOngA+PRqhAn7si3TQ3/ZuPuQZcIEtVap+ENSXbzWhpojKB8CpvnIsrwBu8/RnHtuw==
+
+tailwindcss@^3.3.3:
   version "3.3.3"
   resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-3.3.3.tgz#90da807393a2859189e48e9e7000e6880a736daf"
   integrity sha512-A0KgSkef7eE4Mf+nKJ83i75TMyq8HqY3qmFIJSWy8bNt0v1lG7jUcpGpoTFxAwYcWOphcTBLPPJg+bDfhDf52w==
