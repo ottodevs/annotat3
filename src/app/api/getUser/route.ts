@@ -1,15 +1,17 @@
 import { NextResponse } from 'next/server'
 import { ComposeClient }from '@composedb/client'
-import {definition} from './src/__generated__/definition.mjs';
+import {definition} from '../../../__generated__/definition.js';
 
-import { authenticateCeramic } from "../../../util/authentication"
+import { authenticateCeramic, authenticateCeramicKey} from "../../../util/authentication"
  
 console.log("definition", definition);
 
 export async function GET() {
     const ceramic = 'http://localhost:7007'
     const compose = new ComposeClient({ ceramic, definition })
-    const session = await authenticateCeramic(ceramic, compose)
+    const did = await authenticateCeramicKey(ceramic, compose)
+    compose.setDID(did)
+
 
     const res = await compose.executeQuery(`
     query {
@@ -21,8 +23,10 @@ export async function GET() {
       }
     }
     `)
+
  
-    return NextResponse.json({ res.data.viewer.user })
+    console.log("res", res);
+    return NextResponse.json({ res})
 }
 
 // TODO: add encryption logic here?
