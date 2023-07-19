@@ -105,278 +105,278 @@ export default function HomePage() {
     }
   };
 
-  const getUserAPI = async () => {
-    try {
-      const user = await fetch(`/api/getUser?did=${localStorage.getItem("did")}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const item = await user.json();
-      console.log(item);
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
+  // const getUserAPI = async () => {
+  //   try {
+  //     const user = await fetch(`/api/getUser?did=${localStorage.getItem("did")}`, {
+  //       method: "GET",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //     });
+  //     const item = await user.json();
+  //     console.log(item);
+  //   } catch (error) {
+  //     console.error("Error:", error);
+  //   }
+  // };
 
-  const getDatasetAPI = async () => {
-    try {
-      const dataset = await fetch(`/api/getDataset?did=${localStorage.getItem("did")}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const item = await dataset.json();
-      console.log(item);
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
+  // const getDatasetAPI = async () => {
+  //   try {
+  //     const dataset = await fetch(`/api/getDataset?did=${localStorage.getItem("did")}`, {
+  //       method: "GET",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //     });
+  //     const item = await dataset.json();
+  //     console.log(item);
+  //   } catch (error) {
+  //     console.error("Error:", error);
+  //   }
+  // };
 
-  const getBlipcaptionrecordAPI = async () => {
-    try {
-      const blip = await fetch(`/api/getBlipcaptionrecord?did=${localStorage.getItem("did")}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const item = await blip.json();
-      console.log(item);
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
+  // const getBlipcaptionrecordAPI = async () => {
+  //   try {
+  //     const blip = await fetch(`/api/getBlipcaptionrecord?did=${localStorage.getItem("did")}`, {
+  //       method: "GET",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //     });
+  //     const item = await blip.json();
+  //     console.log(item);
+  //   } catch (error) {
+  //     console.error("Error:", error);
+  //   }
+  // };
 
-  const createUserAPI = async (first_name, last_name) => {
-    try {
-      const resCreate = await fetch(`/api/createUser?did=${localStorage.getItem("did")}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ first_name: first_name, last_name: last_name }),
-      });
-      const item = await resCreate.json();
-      console.log(item);
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
+  // const createUserAPI = async (first_name, last_name) => {
+  //   try {
+  //     const resCreate = await fetch(`/api/createUser?did=${localStorage.getItem("did")}`, {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({ first_name: first_name, last_name: last_name }),
+  //     });
+  //     const item = await resCreate.json();
+  //     console.log(item);
+  //   } catch (error) {
+  //     console.error("Error:", error);
+  //   }
+  // };
 
-  const createDatasetAPI = async (name, type, userId) => {
-    try {
-      const resCreate = await fetch(`/api/createDataset?did=${localStorage.getItem("did")}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name: name, type: type, userId: userId }),
-      });
-      const item = await resCreate.json();
-      console.log(item);
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
+  // const createDatasetAPI = async (name, type, userId) => {
+  //   try {
+  //     const resCreate = await fetch(`/api/createDataset?did=${localStorage.getItem("did")}`, {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({ name: name, type: type, userId: userId }),
+  //     });
+  //     const item = await resCreate.json();
+  //     console.log(item);
+  //   } catch (error) {
+  //     console.error("Error:", error);
+  //   }
+  // };
 
-  const createBlipcaptionrecordAPI = async (
-    annotation_id, annotator, created_at, filename, _id, lead_time, review, stars, type, uid, updated_at, url ,datasetId) => {
-    try {
-      const resCreate = await fetch(`/api/createBlipcaptionrecord?did=${localStorage.getItem("did")}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ annotation_id: annotation_id, annotator: annotator, created_at: created_at, filename: filename, _id: _id, lead_time: lead_time, review: review, stars: stars, type: type, uid: uid, updated_at: updated_at, url: url ,datasetId: datasetId}),
-      });
-      const item = await resCreate.json();
-      console.log(item);
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
+  // const createBlipcaptionrecordAPI = async (
+  //   annotation_id, annotator, created_at, filename, _id, lead_time, review, stars, type, uid, updated_at, url ,datasetId) => {
+  //   try {
+  //     const resCreate = await fetch(`/api/createBlipcaptionrecord?did=${localStorage.getItem("did")}`, {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({ annotation_id: annotation_id, annotator: annotator, created_at: created_at, filename: filename, _id: _id, lead_time: lead_time, review: review, stars: stars, type: type, uid: uid, updated_at: updated_at, url: url ,datasetId: datasetId}),
+  //     });
+  //     const item = await resCreate.json();
+  //     console.log(item);
+  //   } catch (error) {
+  //     console.error("Error:", error);
+  //   }
+  // };
 
   
       
 
-//   const getUser = async () => {
-//     try {
-//       const user = await composeClient.executeQuery(`
-//     query {
-//       userIndex(first: 100){
-//         edges {
-//           node {
-//           id,
-//           first_name,
-//           last_name
-//         }
-//       }
-//     }
-//   }
-//     `);
+  const getUser = async () => {
+    try {
+      const user = await composeClient.executeQuery(`
+    query {
+      userIndex(first: 100){
+        edges {
+          node {
+          id,
+          first_name,
+          last_name
+        }
+      }
+    }
+  }
+    `);
 
-//       console.log(user);
-//     } catch (error) {
-//       console.error("Error:", error);
-//     }
-//   };
+      console.log(user);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
 
-//   const getDataset = async () => {
-//     try {
-//       const dataset = await composeClient.executeQuery(`
-//       query {
-//         datasetIndex(first: 100){
-//           edges {
-//               node {
-//                 id,
-//                 name,
-//                 type,
-//                 userId
-//                     }
-//               }
-//         }
-//       }
-//       `);
-//       console.log(dataset);
-//     } catch (error) {
-//       console.error("Error:", error);
-//     }
-//   };
+  const getDataset = async () => {
+    try {
+      const dataset = await composeClient.executeQuery(`
+      query {
+        datasetIndex(first: 100){
+          edges {
+              node {
+                id,
+                name,
+                type,
+                userId
+                    }
+              }
+        }
+      }
+      `);
+      console.log(dataset);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
 
-//   const getBlipcaptionrecord = async () => {
-//     try {
-//       const blip = await composeClient.executeQuery(`
-//       query {
-//         blipCaptionRecordIndex(first: 100) {
-//           edges {
-//             node {
-//               annotation_id,
-//               annotator,
-//               created_at,
-//               filename,
-//               _id,
-//               lead_time,
-//               review,
-//               stars,
-//               type,
-//               uid,
-//               updated_at,
-//               url,
-//               datasetId,
-//               dataset {
-//                 id, 
-//                 name, 
-//               }
-//             }
-//           }
-//         }
-//       }    
-//       `);
-//       console.log(blip);
-//     } catch (error) {
-//       console.error("Error:", error);
-//     }
-//   };
+  const getBlipcaptionrecord = async () => {
+    try {
+      const blip = await composeClient.executeQuery(`
+      query {
+        blipCaptionRecordIndex(first: 100) {
+          edges {
+            node {
+              annotation_id,
+              annotator,
+              created_at,
+              filename,
+              _id,
+              lead_time,
+              review,
+              stars,
+              type,
+              uid,
+              updated_at,
+              url,
+              datasetId,
+              dataset {
+                id, 
+                name, 
+              }
+            }
+          }
+        }
+      }    
+      `);
+      console.log(blip);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
 
-//   const createUser = async (first_name, last_name) => {
-//     try {
-//       const resCreate = await composeClient.executeQuery(`
-//     mutation {
-//         createUser(input: {
-//           content: {
-//             first_name: """ ${first_name} """,
-//             last_name: """ ${last_name} """
-//           }
-//         })
-//         {
-//           document {
-//             first_name,
-//             last_name
-//           }
-//         }
-//       }
-// `);
-//       console.log(resCreate);
-//     } catch (error) {
-//       console.error("Error:", error);
-//     }
-//   };
+  const createUser = async (first_name, last_name) => {
+    try {
+      const resCreate = await composeClient.executeQuery(`
+    mutation {
+        createUser(input: {
+          content: {
+            first_name: """ ${first_name} """,
+            last_name: """ ${last_name} """
+          }
+        })
+        {
+          document {
+            first_name,
+            last_name
+          }
+        }
+      }
+`);
+      console.log(resCreate);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
 
-//   const createDataset = async (name, type, userId) => {
-//     try {
-//       const resCreate = await composeClient.executeQuery(`
-//       mutation {
-//           createDataset(input: {
-//             content: {
-//               name: """ ${name} """,
-//               type: """ ${type} """,
-//               userId: """ ${userId} """
-//             }
-//           })
-//           {
-//             document {
-//               name,
-//               type,
-//               userId
-//             }
-//           }
-//         }
-//   `);
-//       console.log(resCreate);
-//     } catch (error) {
-//       console.error("Error:", error);
-//     }
-//   };
+  const createDataset = async (name, type, userId) => {
+    try {
+      const resCreate = await composeClient.executeQuery(`
+      mutation {
+          createDataset(input: {
+            content: {
+              name: """ ${name} """,
+              type: """ ${type} """,
+              userId: """ ${userId} """
+            }
+          })
+          {
+            document {
+              name,
+              type,
+              userId
+            }
+          }
+        }
+  `);
+      console.log(resCreate);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
 
-//   const createBlipcaptionrecord = async (
-//     annotation_id, annotator, created_at, filename, _id, lead_time, review, stars, type, uid, updated_at, url ,datasetId) => {
-//     try {
+  const createBlipcaptionrecord = async (
+    annotation_id, annotator, created_at, filename, _id, lead_time, review, stars, type, uid, updated_at, url ,datasetId) => {
+    try {
 
-//     const resCreate = await composeClient.executeQuery(`
-//     mutation {
-//       createBlipCaptionRecord(input: {
-//         content: {
-//           annotation_id: ${annotation_id},
-//           annotator: ${annotator},
-//           created_at: "${created_at}",
-//           filename: "${filename}",
-//           _id: ${_id},
-//           lead_time: ${lead_time},
-//           review: "${review}",
-//           stars: ${stars},
-//           type: "${type}",
-//           uid: ${uid},
-//           updated_at: "${updated_at}",
-//           url: "${url}",
-//           datasetId: "${datasetId}"
-//         }
-//       }) {
-//         document {
-//           annotation_id,
-//           annotator,
-//           created_at,
-//           filename,
-//           _id,
-//           lead_time,
-//           review,
-//           stars,
-//           type,
-//           uid,
-//           updated_at,
-//           url,
-//           datasetId
-//         }
-//       }
-//     }
-//   `);
-//   console.log(resCreate);
-//   } catch (error) {
-//     console.error("Error:", error);
-//   }
-// };
+    const resCreate = await composeClient.executeQuery(`
+    mutation {
+      createBlipCaptionRecord(input: {
+        content: {
+          annotation_id: ${annotation_id},
+          annotator: ${annotator},
+          created_at: "${created_at}",
+          filename: "${filename}",
+          _id: ${_id},
+          lead_time: ${lead_time},
+          review: "${review}",
+          stars: ${stars},
+          type: "${type}",
+          uid: ${uid},
+          updated_at: "${updated_at}",
+          url: "${url}",
+          datasetId: "${datasetId}"
+        }
+      }) {
+        document {
+          annotation_id,
+          annotator,
+          created_at,
+          filename,
+          _id,
+          lead_time,
+          review,
+          stars,
+          type,
+          uid,
+          updated_at,
+          url,
+          datasetId
+        }
+      }
+    }
+  `);
+  console.log(resCreate);
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
 
 
   const grabDataset = async () => {
@@ -455,65 +455,70 @@ export default function HomePage() {
           style={{ margin: "auto", alignContent: "center" }}
         >
           <br />
-          test model 
+          Test model 
         </button>
         <br />
-
         <button
           onClick={() => {
-            getUserAPI();
+            createUser('John', 'Doe');
           }}
           style={{ margin: "auto", alignContent: "center" }}
         >
           <br />
-          get user
+          Create User 
         </button>
+        <br />
         <button
           onClick={() => {
-            getDatasetAPI();
+            createDataset('dataset1', 'type1', 'user1');
           }}
           style={{ margin: "auto", alignContent: "center" }}
         >
           <br />
-          get dataset  
-        </button> 
-        <button
-          onClick={() => {
-            getBlipcaptionrecordAPI();
-          }}
-          style={{ margin: "auto", alignContent: "center" }}
-        >
-          <br />
-          get blipcaptionrecord  
+          Create Dataset
         </button>
+        <br />
         <button
           onClick={() => {
-            createUserAPI("test", "test");
+            createBlipcaptionrecord('annotation1', 'annotator1', 'created_at1', 'filename1', 'id1', 'lead_time1', 'review1', 'stars1', 'type1', 'uid1', 'updated_at1', 'url1', 'datasetId1');
           }}
           style={{ margin: "auto", alignContent: "center" }}
         >
           <br />
-          create user  
+          Create Blipcaptionrecord 
         </button>
+        <br />
         <button
           onClick={() => {
-            createDatasetAPI("test", "test", "test");
+            getUser();
           }}
           style={{ margin: "auto", alignContent: "center" }}
         >
           <br />
-          create dataset 
+          Get User
         </button>
+        <br />
         <button
           onClick={() => {
-            createBlipcaptionrecordAPI("")
+            getDataset();
           }}
           style={{ margin: "auto", alignContent: "center" }}
         >
           <br />
-          create blipcaptionrecord  
+          Get Dataset
+        </button>
+        <br />
+        <button
+          onClick={() => {
+            getBlipcaptionrecord();
+          }}
+          style={{ margin: "auto", alignContent: "center" }}
+        >
+          <br />
+          Get Blipcaptionrecord
         </button>
       </div>
     </main>
   );
 }
+

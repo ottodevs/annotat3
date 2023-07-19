@@ -22,8 +22,8 @@ export async function POST(req) {
     mutation {
         createUser(input: {
           content: {
-            first_name: """ ${first_name} """,
-            last_name: """ ${last_name} """
+            first_name: """${first_name}""",
+            last_name: """${last_name}"""
           }
         })
         {
