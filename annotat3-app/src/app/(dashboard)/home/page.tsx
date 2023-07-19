@@ -11,12 +11,13 @@ type Props = {};
 const HomePage: FC<Props> = () => {
     return (
         <>
-            <h1> Start Exploring</h1>
+<h1 className="mt-14 text-2xl">Start Exploring</h1>
+
 
             {/* 1. Button at the top of the page full width. */}
             {/* <button className="w-full p-4 bg-blue-500 text-white rounded">Click Me</button> */}
 
-            <Button className="w-full">Start Annotating Now</Button>
+            <Button variant="default" size="default" >Start Annotating Now</Button>
 
 
             {/* 2. Row under this with a div container. */}

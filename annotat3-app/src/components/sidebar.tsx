@@ -6,6 +6,7 @@ import useMobileView from '@/hooks/useMobileView';
 import SidebarItem from './sidebarItem';
 import { MdStackedLineChart } from 'react-icons/md';
 import { MdLayers } from 'react-icons/md';
+import { MdPerson } from 'react-icons/md';
 
 type Props = {}
 
@@ -29,6 +30,12 @@ const Sidebar: FC<Props> = () => {
     name: 'Library',
     href: '/library',
     Icon: MdLayers,
+  },
+
+  {
+    name: 'My Profile',
+    href: '/profile',
+    Icon: MdPerson,
   }
     // add more items here
   ];
