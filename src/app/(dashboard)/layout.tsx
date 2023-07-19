@@ -3,7 +3,7 @@
 import { useState } from 'react'
 
 import { CeramicContextProvider } from '@/context/ceramic.context'
-import '../../styles/globals.css'
+import '../globals.css'
 
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
