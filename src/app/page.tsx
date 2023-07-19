@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 "use client";
 
 import Link from "next/link";
@@ -522,3 +523,19 @@ export default function HomePage() {
   );
 }
 
+=======
+import { FC } from 'react';
+
+
+type Props = {};
+
+const HomePage: FC<Props> = () => {
+    return (
+        <>
+           <h1>Home Page</h1>
+        </>
+    );
+}
+
+export default HomePage;
+>>>>>>> main

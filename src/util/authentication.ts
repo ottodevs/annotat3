@@ -1,6 +1,7 @@
 import { DIDSession } from "did-session";
 // import { readFileSync, readdirSync } from 'fs';
 // import { fromString } from "uint8arrays/from-string";
+
 import { EthereumWebAuth, getAccountId } from "@didtools/pkh-ethereum";
 import type { CeramicApi } from "@ceramicnetwork/common"
 import type { ComposeClient } from "@composedb/client";
@@ -70,8 +71,6 @@ export const authenticateCeramic = async (ceramic: CeramicApi, compose: ComposeC
 //     provider: new Ed25519Provider(key)
 //   })
 //   await did.authenticate()
-
-
 //   compose.setDID(did)
 //   return did;
 //   // compose.did = did
