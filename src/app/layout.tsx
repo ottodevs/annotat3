@@ -9,6 +9,17 @@ import { Inter } from 'next/font/google'
 import { Sidebar } from "@/components/sidebar.component"
 import { Profile } from '@/types'
 
+import { WagmiConfig, createConfig, mainnet } from 'wagmi'
+import { createPublicClient, http } from 'viem'
+
+const config = createConfig({
+  autoConnect: true,
+  publicClient: createPublicClient({
+    chain: mainnet,
+    transport: http()
+  }),
+})
+
 const inter = Inter({ subsets: ['latin'] })
 
 // export const metadata: Metadata = {
@@ -26,11 +37,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} h-screen`}>
-        <CeramicContextProvider>
-        {/* <Sidebar name = {profile?.name} username = {profile?.username} id={profile?.id}/> */}
-        {children}
-        </CeramicContextProvider>
-        </body>
+        <WagmiConfig config={config}>
+           <CeramicContextProvider>
+                {/* <Sidebar name = {profile?.name} username = {profile?.username} id={profile?.id}/> */}
+                {children}
+          </CeramicContextProvider>
+       </WagmiConfig>
+      </body>
     </html>
   )
 }
