@@ -25,10 +25,10 @@ export const writeComposite = async () => {
 
   const userComposite = await createComposite(
     ceramic,
-    "../models/user.graphql"
+    "./models/00-user.graphql"
   );
 
-  const datasetSchema = readFileSync("../models/dataset.graphql", {
+  const datasetSchema = readFileSync("./models/01-dataset.graphql", {
     encoding: "utf-8",
   }).replace("$USER_ID", userComposite.modelIDs[0])
 
@@ -37,7 +37,7 @@ export const writeComposite = async () => {
     schema: datasetSchema,
   });
 
-  const blipCaptionRecordSchema = readFileSync("../models/blipCaptionRecord.graphql", {
+  const blipCaptionRecordSchema = readFileSync("./models/02-blipCaptionRecord.graphql", {
     encoding: "utf-8",
   }).replace("$DATASET_ID", dataSetComposite.modelIDs[1])
 
@@ -46,7 +46,17 @@ export const writeComposite = async () => {
     schema: blipCaptionRecordSchema,
   });
 
-  // const datasetConnectSchema = readFileSync("./composites-newer/03-DatasetConnect.graphql", {
+  const userConnectSchema = readFileSync("./models/03-userConnect.graphql", {
+    encoding: "utf-8",
+  }).replace("$DATASET_ID", dataSetComposite.modelIDs[1])
+    .replace("$USER_ID", userComposite.modelIDs[0])
+
+  const userConnectComposite = await Composite.create({
+    ceramic,
+    schema: userConnectSchema,
+  });
+
+  // const datasetConnectSchema = readFileSync("./models/04-datasetConnect.graphql", {
   //   encoding: "utf-8",
   // }).replace("$TEXTCLASSIFICATION_ID", textClassificationComposite.modelIDs[1])
   //   .replace("$DATASET_ID", dataSetComposite.modelIDs[1])
@@ -56,22 +66,12 @@ export const writeComposite = async () => {
   //   schema: datasetConnectSchema,
   // });
 
-  // const userConnectSchema = readFileSync("./composites-newer/04-UserConnect.graphql", {
-  //   encoding: "utf-8",
-  // }).replace("$DATASET_ID", dataSetComposite.modelIDs[1])
-  //   .replace("$USER_ID", userComposite.modelIDs[0])
-
-  // const userConnectComposite = await Composite.create({
-  //   ceramic,
-  //   schema: userConnectSchema,
-  // });
-
   const composite = Composite.from([
     userComposite,
     dataSetComposite,
-    blipCaptionRecordComposite
+    blipCaptionRecordComposite,
+    userConnectComposite,
     // dataSetConnectComposite,
-    // userConnectComposite
   ]);
 
   console.log("writing composite to Ceramic")
@@ -96,7 +96,7 @@ export const writeComposite = async () => {
  * @return {Promise<void>} - return void when DID is authenticated.
  */
 const authenticate = async () => {
-  const seed = readFileSync('../admin.sk', 'utf8').replace(/\n/g, '')
+  const seed = readFileSync('./admin.sk', 'utf8').replace(/\n/g, '')
   const key = fromString(
     seed,
     "base16"

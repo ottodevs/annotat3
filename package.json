@@ -46,7 +46,11 @@
     "@composedb/devtools-node": "^0.4.4",
     "@composedb/types": "^0.4.4",
     "autoprefixer": "10.4.14",
+    "dids": "^4.0.3",
+    "key-did-provider-ed25519": "^3.0.1",
+    "key-did-resolver": "^3.0.0",
     "postcss": "8.4.26",
-    "tailwindcss": "3.3.3"
+    "tailwindcss": "3.3.3",
+    "uint8arrays": "^4.0.4"
   }
 }
