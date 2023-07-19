@@ -7,7 +7,7 @@ type BlipCaptionRecord @createModel(accountRelation: LIST, description: "Basic m
   annotation_id: Int!
   annotator: Int!
   created_at: String! @string(maxLength: 1000000)
- imageHash: String! @string(maxLength: 1000000)
+  imageHash: String! @string(maxLength: 1000000)
   _id: Int!
   type: String! @string(maxLength: 1000000)
   uid: Int!
