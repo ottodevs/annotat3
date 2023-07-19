@@ -6,7 +6,7 @@ import { serveEncodedDefinition } from "@composedb/devtools-node";
 const server = await serveEncodedDefinition({
   ceramicURL: "http://localhost:7007",
   graphiql: true,
-  path: "./src/__generated__/definition.json",
+  path: "../src/__generated__/definition.json",
   port: 5001,
 });
 
