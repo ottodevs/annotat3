@@ -30,6 +30,7 @@ export default function RootLayout({
         <Sidebar name = {profile?.name} username = {profile?.username} id={profile?.id}/>
         {children}
         </CeramicContextProvider>
+        
         </body>
     </html>
   )
