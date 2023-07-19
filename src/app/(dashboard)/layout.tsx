@@ -1,8 +1,8 @@
 // TODO: needed by useState, move to another file
 "use client"
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
-import { CeramicContextProvider } from '@/context/ceramic.context'
+import { CeramicContextProvider, useCeramicContext } from '@/context/ceramic.context'
 import '../globals.css'
 
 import type { Metadata } from 'next'
@@ -10,6 +10,9 @@ import { Inter } from 'next/font/google'
 import { Profile } from '@/types'
 import Sidebar from '@/components/sidebar.component'
 import SidebarProvider from '@/providers/SidebarProvider'
+import { authenticateCeramic } from '@/util/authentication'
+import { Wagmi } from '@/components/wagmi.component'
+import Link from 'next/link'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -23,12 +26,88 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const [profile, setProfile] = useState<Profile | undefined>()
+  const clients = useCeramicContext();
+  const { ceramic, composeClient } = clients;
+  const [profile, setProfile] = useState<Profile | undefined>();
+  const [loading, setLoading] = useState<boolean>(false);
+  const [auth, setAuth] = useState<boolean>(false);
+
+  //runs on useeffect
+  const handleLogin = async () => {
+    await authenticateCeramic(ceramic, composeClient);
+    if (localStorage.getItem("did")) {
+      setAuth(true);
+    }
+  };
+
+  //sign in with Ethereum
+  const authenticate = async () => {
+    await authenticateCeramic(ceramic, composeClient);
+    if (localStorage.getItem("did")) {
+      setAuth(true);
+    }
+  };
+
+  //use this method to encrypt a string
+  const encrypt = async (input: string) => {
+    const result = await fetch("/api/encrypt", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(input),
+    });
+    const item = await result.json();
+    return item.message;
+  };
+
+  //use this method to decrypt a string
+  const decrypt = async (input: string) => {
+    const result = await fetch("/api/decrypt", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(input),
+    });
+    const item = await result.json();
+    return item.message;
+  };
+
+  useEffect(() => {
+    if (localStorage.getItem("did")) {
+      handleLogin();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <html lang="en">
       <body className={inter.className}>
         <CeramicContextProvider>
+          <Wagmi />
+          <Link href="/annotation">Start annotating</Link>
+      <div style={{ display: "relative", flexDirection: "column" }}>
+          {auth ? (
+            <button
+              onClick={() => {
+                alert("You are already authenticated");
+              }}
+              style={{ margin: "auto", alignContent: "center" }}
+            >
+              Authenticated
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                authenticate();
+              }}
+              style={{ margin: "auto", alignContent: "center" }}
+            >
+              Authenticate ceramic
+            </button>
+          )}
+        </div>
           <SidebarProvider>
           <section className="flex h-screen w-full">
               <Sidebar />
