@@ -1,13 +1,13 @@
 import { DIDSession } from "did-session";
-import { readFileSync, readdirSync } from 'fs';
-import { fromString } from "uint8arrays/from-string";
+// import { readFileSync, readdirSync } from 'fs';
+// import { fromString } from "uint8arrays/from-string";
 import { EthereumWebAuth, getAccountId } from "@didtools/pkh-ethereum";
 import type { CeramicApi } from "@ceramicnetwork/common"
 import type { ComposeClient } from "@composedb/client";
 
-import { DID } from 'dids';
-import { getResolver } from "key-did-resolver";
-import { Ed25519Provider } from "key-did-provider-ed25519";
+// import { DID } from 'dids';
+// import { getResolver } from "key-did-resolver";
+// import { Ed25519Provider } from "key-did-provider-ed25519";
 
 // If you are relying on an injected provider this must be here otherwise you will have a type error. 
 declare global {
@@ -59,20 +59,20 @@ export const authenticateCeramic = async (ceramic: CeramicApi, compose: ComposeC
   return session
 }
 
-export const  authenticateCeramicKey = async (ceramic: CeramicApi, compose: ComposeClient) => {
-  const seed = readFileSync('/home/slyracoon23/Documents/hackathon/augmentAI/annotat3/admin.sk', 'utf8')
-  const key = fromString(
-    seed,
-    "base16"
-  );
-  const did = new DID({
-    resolver: getResolver(),
-    provider: new Ed25519Provider(key)
-  })
-  await did.authenticate()
+// export const  authenticateCeramicKey = async (ceramic: CeramicApi, compose: ComposeClient) => {
+//   const seed = readFileSync('/home/slyracoon23/Documents/hackathon/augmentAI/annotat3/admin.sk', 'utf8')
+//   const key = fromString(
+//     seed,
+//     "base16"
+//   );
+//   const did = new DID({
+//     resolver: getResolver(),
+//     provider: new Ed25519Provider(key)
+//   })
+//   await did.authenticate()
 
 
-  compose.setDID(did)
-  return did;
-  // compose.did = did
-}
+//   compose.setDID(did)
+//   return did;
+//   // compose.did = did
+// }

@@ -1,15 +1,15 @@
-"use client"
+"use client";
 
-import Link from 'next/link'
+import Link from "next/link";
 // import type { BasicProfile } from "@datamodels/identity-profile-basic";
-import { useCeramicContext } from '@/context/ceramic.context';
-import { useEffect, useState } from 'react';
-import { authenticateCeramic } from '@/util/authentication';
-import { Wagmi } from '@/components/wagmi.component';
+import { useCeramicContext } from "@/context/ceramic.context";
+import { useEffect, useState } from "react";
+import { authenticateCeramic } from "@/util/authentication";
+import { Wagmi } from "@/components/wagmi.component";
 
 type Profile = {
-  did: string
-}
+  did: string;
+};
 
 export default function HomePage() {
   const clients = useCeramicContext();
@@ -105,6 +105,280 @@ export default function HomePage() {
     }
   };
 
+  const getUserAPI = async () => {
+    try {
+      const user = await fetch(`/api/getUser?did=${localStorage.getItem("did")}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const item = await user.json();
+      console.log(item);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
+  const getDatasetAPI = async () => {
+    try {
+      const dataset = await fetch(`/api/getDataset?did=${localStorage.getItem("did")}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const item = await dataset.json();
+      console.log(item);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
+  const getBlipcaptionrecordAPI = async () => {
+    try {
+      const blip = await fetch(`/api/getBlipcaptionrecord?did=${localStorage.getItem("did")}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const item = await blip.json();
+      console.log(item);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
+  const createUserAPI = async (first_name, last_name) => {
+    try {
+      const resCreate = await fetch(`/api/createUser?did=${localStorage.getItem("did")}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ first_name: first_name, last_name: last_name }),
+      });
+      const item = await resCreate.json();
+      console.log(item);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
+  const createDatasetAPI = async (name, type, userId) => {
+    try {
+      const resCreate = await fetch(`/api/createDataset?did=${localStorage.getItem("did")}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name: name, type: type, userId: userId }),
+      });
+      const item = await resCreate.json();
+      console.log(item);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
+  const createBlipcaptionrecordAPI = async (
+    annotation_id, annotator, created_at, filename, _id, lead_time, review, stars, type, uid, updated_at, url ,datasetId) => {
+    try {
+      const resCreate = await fetch(`/api/createBlipcaptionrecord?did=${localStorage.getItem("did")}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ annotation_id: annotation_id, annotator: annotator, created_at: created_at, filename: filename, _id: _id, lead_time: lead_time, review: review, stars: stars, type: type, uid: uid, updated_at: updated_at, url: url ,datasetId: datasetId}),
+      });
+      const item = await resCreate.json();
+      console.log(item);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
+  
+      
+
+//   const getUser = async () => {
+//     try {
+//       const user = await composeClient.executeQuery(`
+//     query {
+//       userIndex(first: 100){
+//         edges {
+//           node {
+//           id,
+//           first_name,
+//           last_name
+//         }
+//       }
+//     }
+//   }
+//     `);
+
+//       console.log(user);
+//     } catch (error) {
+//       console.error("Error:", error);
+//     }
+//   };
+
+//   const getDataset = async () => {
+//     try {
+//       const dataset = await composeClient.executeQuery(`
+//       query {
+//         datasetIndex(first: 100){
+//           edges {
+//               node {
+//                 id,
+//                 name,
+//                 type,
+//                 userId
+//                     }
+//               }
+//         }
+//       }
+//       `);
+//       console.log(dataset);
+//     } catch (error) {
+//       console.error("Error:", error);
+//     }
+//   };
+
+//   const getBlipcaptionrecord = async () => {
+//     try {
+//       const blip = await composeClient.executeQuery(`
+//       query {
+//         blipCaptionRecordIndex(first: 100) {
+//           edges {
+//             node {
+//               annotation_id,
+//               annotator,
+//               created_at,
+//               filename,
+//               _id,
+//               lead_time,
+//               review,
+//               stars,
+//               type,
+//               uid,
+//               updated_at,
+//               url,
+//               datasetId,
+//               dataset {
+//                 id, 
+//                 name, 
+//               }
+//             }
+//           }
+//         }
+//       }    
+//       `);
+//       console.log(blip);
+//     } catch (error) {
+//       console.error("Error:", error);
+//     }
+//   };
+
+//   const createUser = async (first_name, last_name) => {
+//     try {
+//       const resCreate = await composeClient.executeQuery(`
+//     mutation {
+//         createUser(input: {
+//           content: {
+//             first_name: """ ${first_name} """,
+//             last_name: """ ${last_name} """
+//           }
+//         })
+//         {
+//           document {
+//             first_name,
+//             last_name
+//           }
+//         }
+//       }
+// `);
+//       console.log(resCreate);
+//     } catch (error) {
+//       console.error("Error:", error);
+//     }
+//   };
+
+//   const createDataset = async (name, type, userId) => {
+//     try {
+//       const resCreate = await composeClient.executeQuery(`
+//       mutation {
+//           createDataset(input: {
+//             content: {
+//               name: """ ${name} """,
+//               type: """ ${type} """,
+//               userId: """ ${userId} """
+//             }
+//           })
+//           {
+//             document {
+//               name,
+//               type,
+//               userId
+//             }
+//           }
+//         }
+//   `);
+//       console.log(resCreate);
+//     } catch (error) {
+//       console.error("Error:", error);
+//     }
+//   };
+
+//   const createBlipcaptionrecord = async (
+//     annotation_id, annotator, created_at, filename, _id, lead_time, review, stars, type, uid, updated_at, url ,datasetId) => {
+//     try {
+
+//     const resCreate = await composeClient.executeQuery(`
+//     mutation {
+//       createBlipCaptionRecord(input: {
+//         content: {
+//           annotation_id: ${annotation_id},
+//           annotator: ${annotator},
+//           created_at: "${created_at}",
+//           filename: "${filename}",
+//           _id: ${_id},
+//           lead_time: ${lead_time},
+//           review: "${review}",
+//           stars: ${stars},
+//           type: "${type}",
+//           uid: ${uid},
+//           updated_at: "${updated_at}",
+//           url: "${url}",
+//           datasetId: "${datasetId}"
+//         }
+//       }) {
+//         document {
+//           annotation_id,
+//           annotator,
+//           created_at,
+//           filename,
+//           _id,
+//           lead_time,
+//           review,
+//           stars,
+//           type,
+//           uid,
+//           updated_at,
+//           url,
+//           datasetId
+//         }
+//       }
+//     }
+//   `);
+//   console.log(resCreate);
+//   } catch (error) {
+//     console.error("Error:", error);
+//   }
+// };
+
+
   const grabDataset = async () => {
     try {
       const dataset = await composeClient.executeQuery(`
@@ -155,34 +429,91 @@ export default function HomePage() {
       <Wagmi />
       <Link href="/annotation">Start annotating</Link>
       <div style={{ display: "relative", flexDirection: "column" }}>
-          {auth ? (
-            <button
-              onClick={() => {
-                alert("You are already authenticated");
-              }}
-              style={{ margin: "auto", alignContent: "center" }}
-            >
-              Authenticated
-            </button>
-          ) : (
-            <button
-              onClick={() => {
-                authenticate();
-              }}
-              style={{ margin: "auto", alignContent: "center" }}
-            >
-              Authenticate ceramic
-            </button>
-          )}
+        {auth ? (
           <button
             onClick={() => {
-              grabDataset();
+              alert("You are already authenticated");
             }}
             style={{ margin: "auto", alignContent: "center" }}
           >
-            <br/>test model
+            Authenticated
           </button>
-        </div>
+        ) : (
+          <button
+            onClick={() => {
+              authenticate();
+            }}
+            style={{ margin: "auto", alignContent: "center" }}
+          >
+            Authenticate ceramic 
+          </button>
+        )}
+        <button
+          onClick={() => {
+            grabDataset();
+          }}
+          style={{ margin: "auto", alignContent: "center" }}
+        >
+          <br />
+          test model 
+        </button>
+        <br />
+
+        <button
+          onClick={() => {
+            getUserAPI();
+          }}
+          style={{ margin: "auto", alignContent: "center" }}
+        >
+          <br />
+          get user
+        </button>
+        <button
+          onClick={() => {
+            getDatasetAPI();
+          }}
+          style={{ margin: "auto", alignContent: "center" }}
+        >
+          <br />
+          get dataset  
+        </button> 
+        <button
+          onClick={() => {
+            getBlipcaptionrecordAPI();
+          }}
+          style={{ margin: "auto", alignContent: "center" }}
+        >
+          <br />
+          get blipcaptionrecord  
+        </button>
+        <button
+          onClick={() => {
+            createUserAPI("test", "test");
+          }}
+          style={{ margin: "auto", alignContent: "center" }}
+        >
+          <br />
+          create user  
+        </button>
+        <button
+          onClick={() => {
+            createDatasetAPI("test", "test", "test");
+          }}
+          style={{ margin: "auto", alignContent: "center" }}
+        >
+          <br />
+          create dataset 
+        </button>
+        <button
+          onClick={() => {
+            createBlipcaptionrecordAPI("")
+          }}
+          style={{ margin: "auto", alignContent: "center" }}
+        >
+          <br />
+          create blipcaptionrecord  
+        </button>
+      </div>
     </main>
-);
+  );
 }
