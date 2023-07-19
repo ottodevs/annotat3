@@ -10,7 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "@ceramicnetwork/cli": "^2.34.0",
-    "@composedb/cli": "^0.4.5"
+    "@composedb/cli": "^0.4.5",
+    "@types/react": "^18.2.15"
   },
   "description": ""
 }
