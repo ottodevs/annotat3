@@ -17,6 +17,7 @@ export async function GET() {
     query {
       viewer {
         user {
+          id,
           first_name,
           last_name
         }

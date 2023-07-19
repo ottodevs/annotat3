@@ -40,18 +40,72 @@ const did = await authenticateCeramicKey(ceramic, compose)
 compose.setDID(did)
 
 
-const res = await compose.executeQuery(`
-query {
-    viewer {
-    user {
-        first_name,
-        last_name
-    }
-    }
-}
-`)
+// const resCreate = await compose.executeQuery(`
+// mutation {
+//     createUser(input: {
+//       content: {
+//         first_name: """ Ceramics""",
+//         last_name: """ Node """
+//       }
+//     })
+//     {
+//       document {
+//         first_name,
+//         last_name
+//       }
+//     }
+//   }
+// `)
+
+
+// const res = await compose.executeQuery(`
+// query {
+//     viewer {
+//     user {
+//         first_name,
+//         last_name
+//     }
+//     }
+// }
+// `)
 
  
-console.log("res", res);
+// console.log("res", res);
+
+
+const resCreate = await compose.executeQuery(`
+mutation {
+    createDataset(input: {
+      content: {
+        name: """ name """,
+        type: """ type """,
+        userId: "k2t6wzhkhabz3jez7n6qgm688aaexsfd9sdpktrjqjf2i28jenve0jln6mbief"
+      }
+    })
+    {
+      document {
+        name,
+        type,
+        userId
+      }
+    }
+  }
+`);
+
+
+const datasetResponse = await compose.executeQuery(`
+query {
+  datasetIndex(first: 10) {
+    edges {
+      node {
+        name
+      }
+    }
+  }
+}
+    `);
+
+console.log("datasetResponse", datasetResponse);
+
 
 // TODO: add encryption logic here?
