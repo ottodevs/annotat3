@@ -6,6 +6,8 @@ import { useCeramicContext } from '@/context/ceramic.context';
 import { useEffect, useState } from 'react';
 import { authenticateCeramic } from '@/util/authentication';
 import { Wagmi } from '@/components/wagmi.component';
+import { Button } from '@/components/ui/button';
+
 
 type Profile = {
   did: string
@@ -174,14 +176,14 @@ export default function HomePage() {
               Authenticate ceramic
             </button>
           )}
-          <button
+          <Button
             onClick={() => {
               grabDataset();
             }}
             style={{ margin: "auto", alignContent: "center" }}
           >
-            <br/>test model
-          </button>
+            Test Button
+          </Button>
         </div>
     </main>
 );

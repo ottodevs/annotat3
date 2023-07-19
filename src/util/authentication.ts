@@ -1,5 +1,5 @@
 import { DIDSession } from "did-session";
-import { readFileSync, readdirSync } from 'fs';
+// import { readFileSync, readdirSync } from 'fs';
 import { fromString } from "uint8arrays/from-string";
 import { EthereumWebAuth, getAccountId } from "@didtools/pkh-ethereum";
 import type { CeramicApi } from "@ceramicnetwork/common"
@@ -60,7 +60,8 @@ export const authenticateCeramic = async (ceramic: CeramicApi, compose: ComposeC
 }
 
 export const  authenticateCeramicKey = async (ceramic: CeramicApi, compose: ComposeClient) => {
-  const seed = readFileSync('/home/slyracoon23/Documents/hackathon/augmentAI/annotat3/admin.sk', 'utf8')
+  // const seed = readFileSync('/home/slyracoon23/Documents/hackathon/augmentAI/annotat3/admin.sk', 'utf8')
+  const seed = "ahtrw"
   const key = fromString(
     seed,
     "base16"
