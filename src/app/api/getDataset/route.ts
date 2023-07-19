@@ -20,6 +20,7 @@ export async function GET() {
       datasetIndex(first: 100){
         edges {
             node {
+              id,
               name,
               type,
               userId

@@ -15,16 +15,30 @@ export async function GET() {
 
     const res = await compose.executeQuery(`
     query {
-      userIndex(first: 100){
+      blipCaptionRecordIndex(first: 100) {
         edges {
           node {
-          id,
-          first_name,
-          last_name
+            annotation_id,
+            annotator,
+            created_at,
+            filename,
+            _id,
+            lead_time,
+            review,
+            stars,
+            type,
+            uid,
+            updated_at,
+            url,
+            datasetId,
+            dataset {
+              id, 
+              name, 
+            }
+          }
         }
       }
-    }
-  }
+    }    
     `)
 
  
@@ -33,3 +47,4 @@ export async function GET() {
 }
 
 // TODO: add encryption logic here?
+
